@@ -1,3 +1,32 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a6787e4dd47b0fc26bf8cbf82f2013426581eac81d4f68ba8f01dcbaa185aa26
-size 885
+﻿Shader "Unlit/UnlitAlphaWithFade"
+ {
+     Properties
+     {
+         _Color ("Color Tint", Color) = (1,1,1,1)   
+         _MainTex ("Base (RGB) Alpha (A)", 2D) = "white"
+     }
+ 
+     Category
+     {
+         Lighting Off
+         ZWrite Off
+                 //ZWrite On  // uncomment if you have problems like the sprite disappear in some rotations.
+         Cull back
+         Blend SrcAlpha OneMinusSrcAlpha
+                 //AlphaTest Greater 0.001  // uncomment if you have problems like the sprites or 3d text have white quads instead of alpha pixels.
+         Tags {Queue=Transparent}
+ 
+         SubShader
+         {
+ 
+              Pass
+              {
+                         SetTexture [_MainTex]
+                         {
+                     ConstantColor [_Color]
+                    Combine Texture * constant
+                 }
+             }
+         }
+     }
+ }

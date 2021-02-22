@@ -1,3 +1,25 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:c241a14aeb690d9e693460e760587f04117ef8e2a8756fdb7dbfe23f7553a55c
-size 630
+﻿//----------------------------------------------
+//            Realistic Car Controller
+//
+// Copyright © 2014 - 2020 BoneCracker Games
+// http://www.bonecrackergames.com
+// Buğra Özdoğanlar
+//
+//----------------------------------------------
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RCC_Spawner : MonoBehaviour {
+
+	// Use this for initialization
+	void Start () {
+
+		int selectedIndex = PlayerPrefs.GetInt ("SelectedRCCVehicle", 0);
+
+		RCC.SpawnRCC (RCC_DemoVehicles.Instance.vehicles [selectedIndex], transform.position, transform.rotation, true, true, true);
+		
+	}
+
+}

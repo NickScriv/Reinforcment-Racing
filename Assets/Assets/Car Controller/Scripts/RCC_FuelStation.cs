@@ -1,3 +1,40 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b7e7cc006eb21235cf3409d460ac0af3ba8dcecfcbea94c1f55bcc9662e984fa
-size 904
+﻿//----------------------------------------------
+//            Realistic Car Controller
+//
+// Copyright © 2014 - 2020 BoneCracker Games
+// http://www.bonecrackergames.com
+// Buğra Özdoğanlar
+//
+//----------------------------------------------
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RCC_FuelStation : MonoBehaviour {
+
+	private RCC_CarControllerV3 targetVehicle;
+	public float refillSpeed = 1f;
+
+	void OnTriggerStay (Collider col) {
+
+		if (targetVehicle == null) {
+
+			if (col.gameObject.GetComponentInParent<RCC_CarControllerV3> ())
+				targetVehicle = col.gameObject.GetComponentInParent<RCC_CarControllerV3> ();
+
+		}
+
+		if(targetVehicle)
+			targetVehicle.fuelTank += refillSpeed * Time.deltaTime;
+		
+	}
+
+	void OnTriggerExit (Collider col) {
+
+		if (col.gameObject.GetComponentInParent<RCC_CarControllerV3> ())
+			targetVehicle = null;
+
+	}
+
+}

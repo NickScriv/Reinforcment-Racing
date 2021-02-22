@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b31d22f2e0fde15dfce7b896b703945c848c1051be74aabcf3f81b61161c247b
-size 751
+﻿//----------------------------------------------
+//            Realistic Car Controller
+//
+// Copyright © 2014 - 2020 BoneCracker Games
+// http://www.bonecrackergames.com
+// Buğra Özdoğanlar
+//
+//----------------------------------------------
+
+using UnityEngine;
+using System.Collections;
+
+/// <summary>
+/// Brake Zones are meant to be used for slowing AI vehicles. If you have a sharp turn on your scene, you can simply use one of these Brake Zones. It has a target speed. AI will adapt its speed to this target speed while in this Brake Zone. It's simple.
+/// </summary>
+[AddComponentMenu("BoneCracker Games/Realistic Car Controller/AI/RCC AI Brake Zone")]
+public class RCC_AIBrakeZone : MonoBehaviour {
+	
+	public float targetSpeed = 50;
+	
+}

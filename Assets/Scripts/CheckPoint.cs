@@ -1,3 +1,21 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:b673eeabd4a611dbac95095cc0f0fc9b6161b402023bd1b63eb3d1bfd689862a
-size 509
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class CheckPoint : MonoBehaviour
+{
+    TrackCheckPoints trackCheckPoints;
+    private void OnTriggerEnter(Collider other)
+    {
+      
+        if (other.gameObject.CompareTag("Player"))
+        {
+            trackCheckPoints.ThroughCheckPoint(this, other.transform);
+        }
+    }
+
+    public void SetTrackCheckPoints(TrackCheckPoints trackCheckPoints)
+    {
+        this.trackCheckPoints = trackCheckPoints;
+    }
+}

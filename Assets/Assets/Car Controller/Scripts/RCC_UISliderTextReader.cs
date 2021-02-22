@@ -1,3 +1,42 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:abf4858bec5cc26a0bde1e85107d3a61947ade63acce455999a2ff1eac6465b3
-size 859
+﻿//----------------------------------------------
+//            Realistic Car Controller
+//
+// Copyright © 2014 - 2020 BoneCracker Games
+// http://www.bonecrackergames.com
+// Buğra Özdoğanlar
+//
+//----------------------------------------------
+
+using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+
+/// <summary>
+/// Receives float from UI Slider, and displays the value as a text.
+/// </summary>
+[AddComponentMenu("BoneCracker Games/Realistic Car Controller/UI/RCC UI Slider Text Reader")]
+public class RCC_UISliderTextReader : MonoBehaviour {
+
+	public Slider slider;
+	public Text text;
+
+	void Awake () {
+
+		if(!slider)
+			slider = GetComponentInParent<Slider> ();
+		
+		if(!text)
+			text = GetComponentInChildren<Text> (); 
+	
+	}
+
+	void Update () {
+
+		if (!slider || !text)
+			return;
+		
+		text.text = slider.value.ToString ("F1");
+
+	}
+
+}

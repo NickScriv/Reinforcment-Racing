@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ddcf8829dc53b36c6afb56f469999c051257715fca6299406d296bfb1e311293
-size 704
+﻿//----------------------------------------------
+//            Realistic Car Controller
+//
+// Copyright © 2014 - 2020 BoneCracker Games
+// http://www.bonecrackergames.com
+// Buğra Özdoğanlar
+//
+//----------------------------------------------
+
+using UnityEngine;
+using System.Collections;
+
+/// <summary>
+/// Animation attached to "Animation Pivot" of the Cinematic Camera is feeding FOV float value.
+/// </summary>
+public class RCC_FOVForCinematicCamera : MonoBehaviour {
+
+	private RCC_CinematicCamera cinematicCamera;
+	public float FOV = 30f;
+
+	void Awake () {
+
+		cinematicCamera = GetComponentInParent<RCC_CinematicCamera> ();
+	
+	}
+
+	void Update () {
+
+		cinematicCamera.targetFOV = FOV;
+	
+	}
+
+}

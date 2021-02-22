@@ -1,3 +1,36 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:ae10d86cd121f0e5b4ac416915fe1608a25e37ff05dde312d6ce7f3b1310f1fb
-size 656
+﻿//----------------------------------------------
+//            Realistic Car Controller
+//
+// Copyright © 2014 - 2020 BoneCracker Games
+// http://www.bonecrackergames.com
+// Buğra Özdoğanlar
+//
+//----------------------------------------------
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RCC_XRToggle : MonoBehaviour {
+
+	public bool XREnabled = false;
+
+	void Start () {
+
+	}
+
+	void Update () {
+
+		if (Input.GetKeyDown (KeyCode.V))
+			ToggleXR ();
+
+	}
+
+	void ToggleXR(){
+
+		UnityEngine.XR.XRSettings.enabled = !UnityEngine.XR.XRSettings.enabled;
+		XREnabled = UnityEngine.XR.XRSettings.enabled;
+
+	}
+
+}

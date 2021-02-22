@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a2a7c8a544dc318d9f451d089ed652017a310eb32ca56574071cf5a657d921c0
-size 681
+﻿//----------------------------------------------
+//            Realistic Car Controller
+//
+// Copyright © 2014 - 2020 BoneCracker Games
+// http://www.bonecrackergames.com
+// Buğra Özdoğanlar
+//
+//----------------------------------------------
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RCC_Records : ScriptableObject {
+
+	#region singleton
+	private static RCC_Records instance;
+	public static RCC_Records Instance{	get{if(instance == null) instance = Resources.Load("RCC Assets/RCC_Records") as RCC_Records; return instance;}}
+	#endregion
+
+	public List<RCC_Recorder.Recorded> records = new List<RCC_Recorder.Recorded>();
+
+}

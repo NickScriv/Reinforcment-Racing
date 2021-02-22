@@ -1,3 +1,37 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:eb8d91eb76a0c48e1254738a15ce978470d936eb72d72d867ad24673ef4d431e
-size 1594
+fileFormatVersion: 2
+guid: 2ffb9278eea28764b8c7ea3500f10633
+timeCreated: 1507921808
+licenseType: Store
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - FL: {instanceID: 0}
+  - BL: {instanceID: 0}
+  - TL: {instanceID: 0}
+  - RL: {instanceID: 0}
+  - IL: {instanceID: 0}
+  - IR: {instanceID: 0}
+  - FLM: {instanceID: 0}
+  - TLM: {instanceID: 0}
+  - RLM: {instanceID: 0}
+  - ILM: {instanceID: 0}
+  - IRM: {instanceID: 0}
+  - FLN: {fileID: 2800000, guid: 430ee26fc7672ba49a385de7f6a4d39f, type: 3}
+  - BLN: {fileID: 2800000, guid: c3cbbe355fb21684aa34288baec679b8, type: 3}
+  - TLN: {fileID: 2800000, guid: c7fc128d480363445be49047dc123de1, type: 3}
+  - ILN: {fileID: 2800000, guid: 3731cfbe988765349b8c91a11fce4a23, type: 3}
+  - IRN: {fileID: 2800000, guid: 4875d4318cc71864f8bbcb57826bd0a8, type: 3}
+  - RLN: {fileID: 2800000, guid: a993ff2f159224c4496140d53c4f9dea, type: 3}
+  - IAN: {fileID: 2800000, guid: b92c00b087825be498ea739bf5695f23, type: 3}
+  - FLA: {fileID: 2800000, guid: 5d5479006f2ab6e4995112f09c2d9bb7, type: 3}
+  - BLA: {fileID: 2800000, guid: ed473fa5d39e6644dbe374efbb30077b, type: 3}
+  - TLA: {fileID: 2800000, guid: 96e86bb84ba62094ca5b427aa943967d, type: 3}
+  - ILA: {fileID: 2800000, guid: f269f84bf37b37f409d86c6a93eb2bda, type: 3}
+  - IRA: {fileID: 2800000, guid: 41c48bb73c28ec0419b8effa54539580, type: 3}
+  - RLA: {fileID: 2800000, guid: ea5b6b5a583317b4c8b9df754d4e898a, type: 3}
+  - IAA: {fileID: 2800000, guid: 52bf0d81e801ed746a812b78ee39c230, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

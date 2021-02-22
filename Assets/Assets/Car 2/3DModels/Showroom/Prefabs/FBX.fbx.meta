@@ -1,3 +1,247 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:7d3683d41411421a6e00b1fc6ca3b649ee315a19dd486346651fb944e6f3a84f
-size 5431
+fileFormatVersion: 2
+guid: 6592e61a4a68e6648b0964ee43417b4c
+timeCreated: 1505924121
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Building
+    100002: Chair1
+    100004: Chair2
+    100006: Chair3
+    100008: Chair4
+    100010: Chair5
+    100012: Chair6
+    100014: Chair7
+    100016: Chair8
+    100018: Chair9
+    100020: Clock
+    100022: Exterior_001
+    100024: ExteriorObjects
+    100026: ExteriorSign
+    100028: Gate1
+    100030: Gate2
+    100032: InteriorSign
+    100034: Lights
+    100036: MainLight
+    100038: Miscellaneous
+    100040: Pot1
+    100042: Pot2
+    100044: Pot3
+    100046: Reflector_001
+    100048: Roof
+    100050: //RootNode
+    100052: Table1
+    100054: Table2
+    100056: Table3
+    100058: Tires1
+    100060: Tires2
+    100062: Tires3
+    100064: WallLights
+    100066: WendyMachine
+    100068: WorkTable1
+    100070: WorkTable2
+    400000: Building
+    400002: Chair1
+    400004: Chair2
+    400006: Chair3
+    400008: Chair4
+    400010: Chair5
+    400012: Chair6
+    400014: Chair7
+    400016: Chair8
+    400018: Chair9
+    400020: Clock
+    400022: Exterior_001
+    400024: ExteriorObjects
+    400026: ExteriorSign
+    400028: Gate1
+    400030: Gate2
+    400032: InteriorSign
+    400034: Lights
+    400036: MainLight
+    400038: Miscellaneous
+    400040: Pot1
+    400042: Pot2
+    400044: Pot3
+    400046: Reflector_001
+    400048: Roof
+    400050: //RootNode
+    400052: Table1
+    400054: Table2
+    400056: Table3
+    400058: Tires1
+    400060: Tires2
+    400062: Tires3
+    400064: WallLights
+    400066: WendyMachine
+    400068: WorkTable1
+    400070: WorkTable2
+    2300000: Building
+    2300002: Chair1
+    2300004: Chair2
+    2300006: Chair3
+    2300008: Chair4
+    2300010: Chair5
+    2300012: Chair6
+    2300014: Chair7
+    2300016: Chair8
+    2300018: Chair9
+    2300020: Clock
+    2300022: ExteriorObjects
+    2300024: ExteriorSign
+    2300026: Gate1
+    2300028: Gate2
+    2300030: InteriorSign
+    2300032: MainLight
+    2300034: Pot1
+    2300036: Pot2
+    2300038: Pot3
+    2300040: Reflector_001
+    2300042: Roof
+    2300044: Table1
+    2300046: Table2
+    2300048: Table3
+    2300050: Tires1
+    2300052: Tires2
+    2300054: Tires3
+    2300056: WallLights
+    2300058: WendyMachine
+    2300060: WorkTable1
+    2300062: WorkTable2
+    3300000: Building
+    3300002: Chair1
+    3300004: Chair2
+    3300006: Chair3
+    3300008: Chair4
+    3300010: Chair5
+    3300012: Chair6
+    3300014: Chair7
+    3300016: Chair8
+    3300018: Chair9
+    3300020: Clock
+    3300022: ExteriorObjects
+    3300024: ExteriorSign
+    3300026: Gate1
+    3300028: Gate2
+    3300030: InteriorSign
+    3300032: MainLight
+    3300034: Pot1
+    3300036: Pot2
+    3300038: Pot3
+    3300040: Reflector_001
+    3300042: Roof
+    3300044: Table1
+    3300046: Table2
+    3300048: Table3
+    3300050: Tires1
+    3300052: Tires2
+    3300054: Tires3
+    3300056: WallLights
+    3300058: WendyMachine
+    3300060: WorkTable1
+    3300062: WorkTable2
+    4300000: Building
+    4300002: Roof
+    4300004: Reflector_001
+    4300006: ExteriorObjects
+    4300008: Gate1
+    4300010: Gate2
+    4300012: WallLights
+    4300014: MainLight
+    4300016: Pot1
+    4300018: Clock
+    4300020: Chair9
+    4300022: Chair8
+    4300024: Chair7
+    4300026: Chair6
+    4300028: Chair5
+    4300030: Chair4
+    4300032: Chair3
+    4300034: Chair2
+    4300036: Chair1
+    4300038: InteriorSign
+    4300040: Pot2
+    4300042: Pot3
+    4300044: Table1
+    4300046: Table2
+    4300048: Table3
+    4300050: Tires1
+    4300052: Tires2
+    4300054: Tires3
+    4300056: WendyMachine
+    4300058: WorkTable1
+    4300060: WorkTable2
+    4300062: ExteriorSign
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

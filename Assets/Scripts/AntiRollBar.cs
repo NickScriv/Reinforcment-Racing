@@ -1,3 +1,39 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:32c3263265d6963ad8e4dbaf7584aea7906a48cfdcf15572321ca0ce57b07828
-size 1134
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class AntiRollBar : MonoBehaviour
+{
+
+    public WheelCollider WheelL;
+    public WheelCollider WheelR;
+    public float AntiRoll = 5000.0f;
+    public Rigidbody Scooter;
+
+    public void FixedUpdate()
+    {
+        WheelHit hit;
+        float travelL = 1.0f;
+        float travelR = 1.0f;
+
+        bool groundedL = WheelL.GetGroundHit(out hit);
+        if (groundedL)
+            travelL = (-WheelL.transform.InverseTransformPoint(hit.point).y - WheelL.radius) / WheelL.suspensionDistance;
+
+        bool groundedR = WheelR.GetGroundHit(out hit);
+        if (groundedR)
+            travelR = (-WheelR.transform.InverseTransformPoint(hit.point).y - WheelR.radius) / WheelR.suspensionDistance;
+
+        float antiRollForce = (travelL - travelR) * AntiRoll;
+
+        if (groundedL)
+
+            Scooter.AddForceAtPosition(WheelL.transform.up * -antiRollForce,
+            WheelL.transform.position);
+
+        if (groundedR)
+            Scooter.AddForceAtPosition(WheelR.transform.up * antiRollForce,
+            WheelR.transform.position);
+    }
+
+}

@@ -1,3 +1,33 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2a23bb08c31a768e2df94958c5236fb01f7e5d94a9f566a0c4468ebeb075a178
-size 637
+Shader "RCCSkidmarks" {
+Properties {
+	_Color ("Main Color", Color) = (1,1,1,1)
+	_MainTex ("Base (RGB) Trans (A)", 2D) = "white" {}
+}
+
+Category {
+	Offset -4, -4
+	ZWrite Off
+	Alphatest Greater 0
+	Tags {"Queue"="Transparent"  "RenderType"="Transparent"}
+	SubShader {
+		ColorMaterial AmbientAndDiffuse
+		Lighting Off
+		Blend SrcAlpha OneMinusSrcAlpha 
+		Pass {
+			ColorMask RGBA
+			SetTexture [_MainTex] {
+				Combine texture, texture * primary
+				// * primary
+			} 
+			SetTexture [_MainTex] {
+				ConstantColor [_Color]
+				Combine constant * previous
+			} 
+		}
+	} 
+}
+
+// Fallback to Alpha Vertex Lit
+Fallback "Transparent/VertexLit", 2
+
+}

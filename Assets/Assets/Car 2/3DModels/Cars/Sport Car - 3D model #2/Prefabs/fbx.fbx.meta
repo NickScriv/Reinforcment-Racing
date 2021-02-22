@@ -1,3 +1,195 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:673ed72edc1d43d25dfef80dcc5a50a9644782bf486f08ee441837f69996c41f
-size 4700
+fileFormatVersion: 2
+guid: 6ce16c9b3e6a90d41b40a7fbdc35178e
+timeCreated: 1508075490
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body
+    100002: Collider
+    100004: EngineHood
+    100006: ExhaustCover
+    100008: FLWheel
+    100010: FrontBumper
+    100012: FrontLeftDoor
+    100014: FrontLightsGlass
+    100016: FrontRightDoor
+    100018: FrontWindow
+    100020: FRWheel
+    100022: LicensePlate
+    100024: RearBumper
+    100026: RearLeftDoor
+    100028: RearLightsGlass
+    100030: RearRightDoor
+    100032: RearWindow
+    100034: RLWheel
+    100036: RRWheel
+    100038: SideWindows
+    100040: Trunk
+    100042: TrunkLightsGlass
+    100044: //RootNode
+    100046: Window
+    100048: Window_001
+    100050: Windows_001
+    100052: Windows_003
+    400000: Body
+    400002: Collider
+    400004: EngineHood
+    400006: ExhaustCover
+    400008: FLWheel
+    400010: FrontBumper
+    400012: FrontLeftDoor
+    400014: FrontLightsGlass
+    400016: FrontRightDoor
+    400018: FrontWindow
+    400020: FRWheel
+    400022: LicensePlate
+    400024: RearBumper
+    400026: RearLeftDoor
+    400028: RearLightsGlass
+    400030: RearRightDoor
+    400032: RearWindow
+    400034: RLWheel
+    400036: RRWheel
+    400038: SideWindows
+    400040: Trunk
+    400042: TrunkLightsGlass
+    400044: //RootNode
+    400046: Window
+    400048: Window_001
+    400050: Windows_001
+    400052: Windows_003
+    2300000: Collider
+    2300002: FrontLightsGlass
+    2300004: FrontWindow
+    2300006: RearLightsGlass
+    2300008: RearWindow
+    2300010: SideWindows
+    2300012: Window
+    2300014: Window_001
+    2300016: Windows_001
+    2300018: Windows_003
+    3300000: Collider
+    3300002: FrontLightsGlass
+    3300004: FrontWindow
+    3300006: RearLightsGlass
+    3300008: RearWindow
+    3300010: SideWindows
+    3300012: Window
+    3300014: Window_001
+    3300016: Windows_001
+    3300018: Windows_003
+    4300000: RLWheel
+    4300002: FLWheel
+    4300004: RRWheel
+    4300006: FRWheel
+    4300008: Body
+    4300010: RearLightsGlass
+    4300012: FrontLightsGlass
+    4300014: RearWindow
+    4300016: FrontWindow
+    4300018: SideWindows
+    4300020: FrontRightDoor
+    4300022: Windows_003
+    4300024: Trunk
+    4300026: LicensePlate
+    4300028: TrunkLightsGlass
+    4300030: RearBumper
+    4300032: FrontBumper
+    4300034: ExhaustCover
+    4300036: EngineHood
+    4300038: FrontLeftDoor
+    4300040: Windows_001
+    4300042: RearLeftDoor
+    4300044: Window_001
+    4300046: RearRightDoor
+    4300048: Window
+    4300050: Collider
+    7400000: Default Take
+    9500000: //RootNode
+    13700000: Body
+    13700002: EngineHood
+    13700004: ExhaustCover
+    13700006: FLWheel
+    13700008: FrontBumper
+    13700010: FrontLeftDoor
+    13700012: FrontRightDoor
+    13700014: FRWheel
+    13700016: LicensePlate
+    13700018: RearBumper
+    13700020: RearLeftDoor
+    13700022: RearRightDoor
+    13700024: RLWheel
+    13700026: RRWheel
+    13700028: Trunk
+    13700030: TrunkLightsGlass
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

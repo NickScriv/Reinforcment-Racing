@@ -1,3 +1,45 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:78321f21c74cf907c843fecbcc5e7e2a395dff6de24cb7a9ad93084a5a12f0d1
-size 1273
+﻿//----------------------------------------------
+//            Realistic Car Controller
+//
+// Copyright © 2014 - 2020 BoneCracker Games
+// http://www.bonecrackergames.com
+// Buğra Özdoğanlar
+//
+//----------------------------------------------
+
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+/// <summary>
+/// Used for holding a list for brake zones, and drawing gizmos for all of them.
+/// </summary>
+[AddComponentMenu("BoneCracker Games/Realistic Car Controller/AI/RCC AI Brake Zones Container")]
+public class RCC_AIBrakeZonesContainer : MonoBehaviour {
+	
+	public List<Transform> brakeZones = new List<Transform>();		// Brake Zones list.
+
+    void Awake() {
+
+		// Changing all layers to ignore raycasts to prevent lens flare occlusion.
+        foreach (var item in brakeZones)
+            item.gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
+
+    }
+
+    // Used for drawing gizmos on Editor.
+    void OnDrawGizmos() {
+		
+		for(int i = 0; i < brakeZones.Count; i ++){
+
+			Gizmos.matrix = brakeZones[i].transform.localToWorldMatrix;
+			Gizmos.color = new Color(1f, 0f, 0f, .25f);
+			Vector3 colliderBounds = brakeZones[i].GetComponent<BoxCollider>().size;
+
+			Gizmos.DrawCube(Vector3.zero, colliderBounds);
+
+		}
+		
+	}
+	
+}

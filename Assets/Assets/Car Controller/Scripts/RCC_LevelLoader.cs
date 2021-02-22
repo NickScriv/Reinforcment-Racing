@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:3e20eb0f24d7bb691e4959dcace3d4c943773a2316764db1639c5479114dbfc0
-size 506
+﻿//----------------------------------------------
+//            Realistic Car Controller
+//
+// Copyright © 2014 - 2020 BoneCracker Games
+// http://www.bonecrackergames.com
+// Buğra Özdoğanlar
+//
+//----------------------------------------------
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class RCC_LevelLoader : MonoBehaviour {
+
+	public void LoadLevel (string levelName) {
+
+		SceneManager.LoadScene (levelName);
+		
+	}
+
+}

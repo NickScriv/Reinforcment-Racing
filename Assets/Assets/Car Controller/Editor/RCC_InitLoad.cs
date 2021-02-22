@@ -1,3 +1,38 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:2ce60d9f5e8f343263d164b21f326fa3c6378358bdc46fe9d1c76f1ab4aa1f30
-size 1015
+﻿//----------------------------------------------
+//            Realistic Car Controller
+//
+// Copyright © 2014 - 2020 BoneCracker Games
+// http://www.bonecrackergames.com
+// Buğra Özdoğanlar
+//
+//----------------------------------------------
+
+using UnityEngine;
+using UnityEditor;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+
+public class RCC_InitLoad : EditorWindow {
+
+	[InitializeOnLoad]
+	public class InitOnLoad {
+		
+		static InitOnLoad(){
+			
+			RCC_SetScriptingSymbol.SetEnabled("BCG_RCC", true);
+			
+			if(!EditorPrefs.HasKey("RCC" + RCC_Settings.RCCVersion.ToString())){
+				
+				EditorPrefs.SetInt("RCC" + RCC_Settings.RCCVersion.ToString(), 1);
+				EditorUtility.DisplayDialog("Regards from BoneCracker Games", "Thank you for purchasing and using Realistic Car Controller. Please read the documentation before use. Also check out the online documentation for updated info. Have fun :)", "Let's get started");
+
+				GetWindow<RCC_WelcomeWindow>(true);
+
+			}
+
+		}
+
+	}
+
+}

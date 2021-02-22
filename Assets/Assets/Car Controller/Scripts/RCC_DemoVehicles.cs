@@ -1,3 +1,23 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:801b976ea49be440f1cce8ffd44dea75c9dd372a34d6b37499f1587ae8f23b47
-size 665
+﻿//----------------------------------------------
+//            Realistic Car Controller
+//
+// Copyright © 2014 - 2020 BoneCracker Games
+// http://www.bonecrackergames.com
+// Buğra Özdoğanlar
+//
+//----------------------------------------------
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RCC_DemoVehicles : ScriptableObject {
+
+	public RCC_CarControllerV3[] vehicles;
+
+	#region singleton
+	private static RCC_DemoVehicles instance;
+	public static RCC_DemoVehicles Instance{	get{if(instance == null) instance = Resources.Load("RCC Assets/RCC_DemoVehicles") as RCC_DemoVehicles; return instance;}}
+	#endregion
+
+}

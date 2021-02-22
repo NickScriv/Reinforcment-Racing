@@ -1,3 +1,18 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:8244512d1e83c047d21474d16b7bf0c05105f615277b31b17bd063fcb00630ee
-size 415
+﻿//----------------------------------------------
+//            Realistic Car Controller
+//
+// Copyright © 2014 - 2020 BoneCracker Games
+// http://www.bonecrackergames.com
+// Buğra Özdoğanlar
+//
+//----------------------------------------------
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class RCC_Waypoint : MonoBehaviour{
+
+    public float targetSpeed = 100f;
+
+}
