@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+
 public class TrackCheckPoints : MonoBehaviour
 {
-    public event EventHandler OnCarCorrectCheckPoint;
-    public event EventHandler OnCarWrongCheckPoint;
+    public class CheckPointSystemArgs : EventArgs
+    {
+        public Transform CarTransform; 
+    }
+
+   
+    public event EventHandler<CheckPointSystemArgs> OnCarCorrectCheckPoint;
+    public event EventHandler<CheckPointSystemArgs> OnCarWrongCheckPoint;
     List<CheckPoint> checkPointList;
     List<int> nextCheckPointIndexList;
     [SerializeField] List<Transform> AICars;
@@ -25,21 +33,33 @@ public class TrackCheckPoints : MonoBehaviour
         {
             nextCheckPointIndexList.Add(0);
         }
+     
     }
 
     public void ThroughCheckPoint(CheckPoint checkPoint, Transform AICarTrans)
     {
-        int nextCheckPointIndex = nextCheckPointIndexList.IndexOf(AICars.IndexOf(AICarTrans));
-        if(checkPointList.IndexOf(checkPoint) == nextCheckPointIndex)
+        /*Debug.Log(AICars.IndexOf(AICarTrans));
+        Debug.Log(nextCheckPointIndexList[AICars.IndexOf(AICarTrans)]);*/
+        int nextCheckPointIndex = nextCheckPointIndexList[AICars.IndexOf(AICarTrans)];
+
+        
+        if (checkPointList.IndexOf(checkPoint) == nextCheckPointIndex)
         {
-            Debug.Log("correct");
-            nextCheckPointIndex = (nextCheckPointIndex + 1) % checkPointList.Count;
-            OnCarCorrectCheckPoint?.Invoke(this, EventArgs.Empty);
+            Debug.Log(("correct"));
+            nextCheckPointIndexList[AICars.IndexOf(AICarTrans)] = (nextCheckPointIndex + 1) % checkPointList.Count;
+            OnCarCorrectCheckPoint?.Invoke(this, new CheckPointSystemArgs { CarTransform = AICarTrans });
+ 
         }
         else
         {
             Debug.Log("Wrong");
-            OnCarWrongCheckPoint?.Invoke(this, EventArgs.Empty);
+            OnCarWrongCheckPoint?.Invoke(this, new CheckPointSystemArgs { CarTransform = AICarTrans});
         }
+    }
+
+    public Vector3 getNextCheckpoint(Transform AICarTrans)
+    {
+        int nextCheckpointIndex = nextCheckPointIndexList.IndexOf(AICars.IndexOf(AICarTrans));
+        return checkPointList[nextCheckpointIndex].transform.position;
     }
 }

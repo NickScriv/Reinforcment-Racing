@@ -16,6 +16,7 @@ public class CheckPoint : MonoBehaviour
 
     public void SetTrackCheckPoints(TrackCheckPoints trackCheckPoints)
     {
+        //Debug.Log(transform.name);
         this.trackCheckPoints = trackCheckPoints;
     }
 }

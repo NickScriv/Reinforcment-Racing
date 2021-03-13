@@ -1050,7 +1050,7 @@ public class RCC_CarControllerV3 : RCC_Core {
             brakeInput = AIBrake;
             steerInput = AIsteer;
             boostInput = 0f;
-            handbrakeInput = AIHandBrake;
+            handbrakeInput = 0f;
         }
 
 		if (fuelInput <= 0f)
