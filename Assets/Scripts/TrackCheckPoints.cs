@@ -31,6 +31,7 @@ public class TrackCheckPoints : MonoBehaviour
 
         foreach (Transform car in AICars)
         {
+           
             nextCheckPointIndexList.Add(0);
         }
      
@@ -38,28 +39,30 @@ public class TrackCheckPoints : MonoBehaviour
 
     public void ThroughCheckPoint(CheckPoint checkPoint, Transform AICarTrans)
     {
-        /*Debug.Log(AICars.IndexOf(AICarTrans));
-        Debug.Log(nextCheckPointIndexList[AICars.IndexOf(AICarTrans)]);*/
+        //Debug.Log(AICars.IndexOf(AICarTrans));
         int nextCheckPointIndex = nextCheckPointIndexList[AICars.IndexOf(AICarTrans)];
 
         
         if (checkPointList.IndexOf(checkPoint) == nextCheckPointIndex)
         {
-            Debug.Log(("correct"));
+            //Debug.Log(("correct"));
             nextCheckPointIndexList[AICars.IndexOf(AICarTrans)] = (nextCheckPointIndex + 1) % checkPointList.Count;
             OnCarCorrectCheckPoint?.Invoke(this, new CheckPointSystemArgs { CarTransform = AICarTrans });
  
         }
         else
         {
-            Debug.Log("Wrong");
+            //Debug.Log("Wrong");
             OnCarWrongCheckPoint?.Invoke(this, new CheckPointSystemArgs { CarTransform = AICarTrans});
         }
     }
 
     public Vector3 getNextCheckpoint(Transform AICarTrans)
     {
-        int nextCheckpointIndex = nextCheckPointIndexList.IndexOf(AICars.IndexOf(AICarTrans));
+       
+       
+        int nextCheckpointIndex = nextCheckPointIndexList[AICars.IndexOf(AICarTrans)];
+        
         return checkPointList[nextCheckpointIndex].transform.position;
     }
 }

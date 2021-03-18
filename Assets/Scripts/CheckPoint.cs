@@ -8,7 +8,7 @@ public class CheckPoint : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
       
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("AICar"))
         {
             trackCheckPoints.ThroughCheckPoint(this, other.transform);
         }

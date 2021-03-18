@@ -21,6 +21,8 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class RCC_CarControllerV3 : RCC_Core {
 
+    TestSpawn testScript;
+
 	// Getting an Instance of Main Shared RCC Settings.
 	#region RCC Settings Instance
 
@@ -398,6 +400,8 @@ public class RCC_CarControllerV3 : RCC_Core {
     public float AIsteer;
 
     void Awake (){
+
+        testScript = GetComponent<TestSpawn>();
 		
 		// Overriding Fixed TimeStep.
 		if(RCCSettings.overrideFixedTimeStep)
@@ -465,6 +469,7 @@ public class RCC_CarControllerV3 : RCC_Core {
     {
         if (gameObject.CompareTag("AICar"))
         {
+            
             AICar = true;
         }
        
@@ -966,11 +971,15 @@ public class RCC_CarControllerV3 : RCC_Core {
 
 		Inputs();
 
-		//Reversing Bool.
-		//if (!externalController){
-
+        //Reversing Bool.
+        //if (!externalController){
+        //Debug.Log(direction);
 		if(brakeInput > .9f  && transform.InverseTransformDirection(rigid.velocity).z < 1f && canGoReverseNow && automaticGear && !semiAutomaticGear && !changingGear && direction != -1)
-			StartCoroutine(ChangeGear(-1));
+        {
+            StartCoroutine(ChangeGear(-1));
+            
+        }
+			
 		else if (throttleInput < .1f && transform.InverseTransformDirection(rigid.velocity).z > -1f && direction == -1 && !changingGear && automaticGear && !semiAutomaticGear)
 			StartCoroutine(ChangeGear(0));
 
@@ -1044,11 +1053,38 @@ public class RCC_CarControllerV3 : RCC_Core {
 			handbrakeInput = 1f;
 
 		}
-        else if(AICar)
+        else if(AICar && testScript != null)
         {
-            throttleInput = AIThrottle;
-            brakeInput = AIBrake;
-            steerInput = AIsteer;
+            if (!automaticGear || semiAutomaticGear)
+            {
+                if (!changingGear && !cutGas)
+                    throttleInput = testScript.AIThrottle;
+                else
+                    throttleInput = 0f;
+            }
+            else
+            {
+                if (!changingGear && !cutGas)
+                    throttleInput = (direction == 1 ? testScript.AIThrottle : testScript.AIBrake);
+                else
+                    throttleInput = 0f;
+            }
+
+            if (!automaticGear || semiAutomaticGear)
+            {
+                brakeInput = Mathf.Clamp01(testScript.AIBrake);
+            }
+            else
+            {
+                if (!cutGas)
+                    brakeInput = (direction == 1 ? testScript.AIBrake : testScript.AIThrottle);
+                else
+                    brakeInput = 0f;
+            }
+
+           // throttleInput = testScript.AIThrottle;
+            //brakeInput = testScript.AIBrake;
+            steerInput = testScript.AISteer;
             boostInput = 0f;
             handbrakeInput = 0f;
         }
@@ -1068,6 +1104,7 @@ public class RCC_CarControllerV3 : RCC_Core {
         //Debug.Log("Throttle: " +  throttleInput + " Steer Input: " + steerInput + " Brake Input: " + brakeInput + " Hand Brake Input: " + handbrakeInput);
 		throttleInput = Mathf.Clamp01(throttleInput);
 		brakeInput = Mathf.Clamp01(brakeInput);
+     
 		steerInput = Mathf.Clamp(steerInput, -1f, 1f);
 		boostInput = Mathf.Clamp01(boostInput);
 		handbrakeInput = Mathf.Clamp01(handbrakeInput);
@@ -1435,8 +1472,9 @@ public class RCC_CarControllerV3 : RCC_Core {
 
 		engineRPM = Mathf.SmoothDamp(engineRPM, (Mathf.Lerp(minEngineRPM, maxEngineRPM + 500f, (clutchInput * throttleInput)) + ((Mathf.Abs(wheelRPM / Mathf.Clamp(poweredWheels, 1, Mathf.Infinity)) * finalRatio * (gears[currentGear].maxRatio)) * (1f - clutchInput))) * fuelInput, ref velocity , engineInertia);
 		engineRPM = Mathf.Clamp (engineRPM, 0f, maxEngineRPM + 500f);
-		
-		//Auto Reverse Bool.
+
+        //Auto Reverse Bool.
+  
 		if(autoReverse){
 			
 			canGoReverseNow = true;
