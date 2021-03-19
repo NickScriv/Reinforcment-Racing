@@ -21,7 +21,7 @@ using UnityEngine.EventSystems;
 /// </summary>
 public class RCC_CarControllerV3 : RCC_Core {
 
-    TestSpawn testScript;
+    AICarAgent AIScript;
 
 	// Getting an Instance of Main Shared RCC Settings.
 	#region RCC Settings Instance
@@ -401,7 +401,7 @@ public class RCC_CarControllerV3 : RCC_Core {
 
     void Awake (){
 
-        testScript = GetComponent<TestSpawn>();
+        AIScript = GetComponent<AICarAgent>();
 		
 		// Overriding Fixed TimeStep.
 		if(RCCSettings.overrideFixedTimeStep)
@@ -1002,6 +1002,8 @@ public class RCC_CarControllerV3 : RCC_Core {
 		
 		launched = Mathf.Clamp01 (launched);
 
+      //Debug.Log(FrontLeftWheelCollider.st);
+
 	}
 
 	private void Inputs() {
@@ -1053,38 +1055,36 @@ public class RCC_CarControllerV3 : RCC_Core {
 			handbrakeInput = 1f;
 
 		}
-        else if(AICar && testScript != null)
+        else if(AICar && AIScript != null)
         {
             if (!automaticGear || semiAutomaticGear)
             {
                 if (!changingGear && !cutGas)
-                    throttleInput = testScript.AIThrottle;
+                    throttleInput = AIScript.AIThrottle;
                 else
                     throttleInput = 0f;
             }
             else
             {
                 if (!changingGear && !cutGas)
-                    throttleInput = (direction == 1 ? testScript.AIThrottle : testScript.AIBrake);
+                    throttleInput = (direction == 1 ? AIScript.AIThrottle : AIScript.AIBrake);
                 else
                     throttleInput = 0f;
             }
 
             if (!automaticGear || semiAutomaticGear)
             {
-                brakeInput = Mathf.Clamp01(testScript.AIBrake);
+                brakeInput = Mathf.Clamp01(AIScript.AIBrake);
             }
             else
             {
                 if (!cutGas)
-                    brakeInput = (direction == 1 ? testScript.AIBrake : testScript.AIThrottle);
+                    brakeInput = (direction == 1 ? AIScript.AIBrake : AIScript.AIThrottle);
                 else
                     brakeInput = 0f;
             }
 
-           // throttleInput = testScript.AIThrottle;
-            //brakeInput = testScript.AIBrake;
-            steerInput = testScript.AISteer;
+            steerInput = AIScript.AISteer;
             boostInput = 0f;
             handbrakeInput = 0f;
         }
@@ -1698,6 +1698,8 @@ public class RCC_CarControllerV3 : RCC_Core {
 
 	}
 
+   
+
 	/// <summary>
 	/// Antiroll bars.
 	/// </summary>
@@ -2232,6 +2234,8 @@ public class RCC_CarControllerV3 : RCC_Core {
 	/// </summary>
 	/// <param name="collision">Collision.</param>
 	void OnCollisionEnter (Collision collision){
+        //TODO: Take out this return after training!
+        return;
 
 		CollisionParticles (collision.contacts [0].point);
 		

@@ -57,12 +57,20 @@ public class TrackCheckPoints : MonoBehaviour
         }
     }
 
-    public Vector3 getNextCheckpoint(Transform AICarTrans)
+    public Transform getNextCheckpoint(Transform AICarTrans)
     {
        
        
         int nextCheckpointIndex = nextCheckPointIndexList[AICars.IndexOf(AICarTrans)];
         
-        return checkPointList[nextCheckpointIndex].transform.position;
+        return checkPointList[nextCheckpointIndex].transform;
+    }
+
+    public void ResetCheckPoints(Transform AICarTrans)
+    {
+
+        nextCheckPointIndexList[AICars.IndexOf(AICarTrans)] = 0;
+      
+
     }
 }
