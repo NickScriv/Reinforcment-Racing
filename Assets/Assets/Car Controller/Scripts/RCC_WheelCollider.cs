@@ -289,10 +289,7 @@ public class RCC_WheelCollider : RCC_Core {
 
             }
         }
-        else
-        {
-            Debug.Log("agent script is null");
-        }
+      
 
 		// Return if RCC is disabled.
 		if (!carController.enabled)

@@ -9,7 +9,8 @@ public class TrackCheckPoints : MonoBehaviour
 {
     public class CheckPointSystemArgs : EventArgs
     {
-        public Transform CarTransform; 
+        public Transform CarTransform;
+        public bool last = false;
     }
 
    
@@ -41,13 +42,19 @@ public class TrackCheckPoints : MonoBehaviour
     {
         //Debug.Log(AICars.IndexOf(AICarTrans));
         int nextCheckPointIndex = nextCheckPointIndexList[AICars.IndexOf(AICarTrans)];
-
+        
         
         if (checkPointList.IndexOf(checkPoint) == nextCheckPointIndex)
         {
             //Debug.Log(("correct"));
+            bool lastLap = false;
+            if(checkPointList.Count - 1 == nextCheckPointIndex)
+            {
+                Debug.Log(("Finished lap"));
+                lastLap = true;
+            }
             nextCheckPointIndexList[AICars.IndexOf(AICarTrans)] = (nextCheckPointIndex + 1) % checkPointList.Count;
-            OnCarCorrectCheckPoint?.Invoke(this, new CheckPointSystemArgs { CarTransform = AICarTrans });
+            OnCarCorrectCheckPoint?.Invoke(this, new CheckPointSystemArgs { CarTransform = AICarTrans, last = lastLap });
  
         }
         else
