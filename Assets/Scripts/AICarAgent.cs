@@ -31,6 +31,7 @@ public class AICarAgent : Agent
     int laps = 0;
     int collisionCount = 0;
     bool frontCol = false;
+    bool first = true;
 
 
 
@@ -56,31 +57,27 @@ public class AICarAgent : Agent
     // When AI agent goes through correct checkpoint, give a reward
     void OnCorrectCheckPoint(object sender, TrackCheckPoints.CheckPointSystemArgs e)
     {
-        if(e.CarTransform == carCollider)
+        first = false;
+        if (e.CarTransform == carCollider)
         {
-            if(e.last)
-            {
-                laps++;
-                if(laps == 3)
-                {
-                    Debug.Log("Finished Race");
-                    AddReward(10f);
-                    EndEpisode();
-                }
-                /*else
-                {
-                    Debug.Log("Finished Lap");
-                    AddReward(5f);
-                }*/
-                
-            }
-            else
-            {
-                AddReward(1f);
-            }
+            
+
+            AddReward(1f);
+            
             //Debug.Log("Through checkpoint award");
             
             secondsCount = 0;
+
+            if (e.last)
+            {
+                laps++;
+                if (laps == 3)
+                {
+                    Debug.Log("Finished Race");
+                    EndEpisode();
+                }
+
+            }
 
         }
     }
@@ -104,6 +101,7 @@ public class AICarAgent : Agent
             secondsCount = 0;
             Debug.Log("Took to long");
             //AddReward(-1f);
+            
             EndEpisode();
         }
         speed = carController.speed;
@@ -117,13 +115,13 @@ public class AICarAgent : Agent
         Vector3 dirToTarget = (checkPos - transform.position).normalized;
         float dirDot = Vector3.Dot(transform.forward, dirToTarget);
         sensor.AddObservation(dirDot);
-        if(dirDot < -0.1f)
+        if(dirDot < 0.0f)
         {
-            Debug.Log("Wrong Way");
-            AddReward(-0.05f);
+           
+            AddReward(-0.1f);
         }
         sensor.AddObservation(dirToTarget);
-      // sensor.AddObservation(carController.speed);
+       //sensor.AddObservation(carController.speed);
         //sensor.AddObservation(rb.velocity);
         //sensor.AddObservation(this.transform.InverseTransformPoint(checkPos));
         sensor.AddObservation(transform.forward);
@@ -138,13 +136,13 @@ public class AICarAgent : Agent
         //AddReward(-0.005f);
 
         // Reward agent if it is facing in the correct direction
-       /* if(dirDot < 0)
-        {
-            dirDot = 0;
-        }
+        /* if(dirDot < 0)
+         {
+             dirDot = 0;
+         }
 
-        AddReward(rewardScalar * dirDot);*/
-
+         AddReward(rewardScalar * dirDot);*/
+        //AddReward(-0.005f);
         cumReward = GetCumulativeReward();
     }
 
@@ -170,10 +168,16 @@ public class AICarAgent : Agent
          }*/
 
 
-        /*movement = Scale(-0.001f, 0.0005f, 0.0f, 180.0f, carController.speed);   
-        AddReward(Mathf.Clamp(movement, -0.001f, 0.0005f));*/
+        /*movement = Scale(-0.005f, 0.0025f, 0.0f, 180.0f, carController.speed);   
+        AddReward(Mathf.Clamp(movement, -0.005f, 0.0025f));*/
 
-        AddReward(-0.001f);
+        //AddReward(-0.001f);
+
+       /* if(first)
+        {
+            AIBrake  = 0.0f;
+            AIThrottle = 1.0f;
+        }*/
 
 
 
@@ -219,7 +223,8 @@ public class AICarAgent : Agent
             rb.velocity = Vector3.zero;
             EndEpisode();
             secondsCount = 0;*/
-            AddReward(-1f);
+            AddReward(-0.5f);
+            
             
             
             //Physics.IgnoreCollision(carCollider.gameObject.GetComponent<MeshCollider>(), collision.collider);
@@ -263,7 +268,8 @@ public class AICarAgent : Agent
             return to;
         return (to - from) * ((val - from2) / (to2 - from2)) + from;
     }
-
+    //.0075
+    // -0.005, 0.0025 
 
 
 
