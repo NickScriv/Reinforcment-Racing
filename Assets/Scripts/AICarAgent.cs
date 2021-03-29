@@ -114,35 +114,25 @@ public class AICarAgent : Agent
         Vector3 checkPos = checkPointScript.getNextCheckpoint(carCollider).position;
         Vector3 dirToTarget = (checkPos - transform.position).normalized;
         float dirDot = Vector3.Dot(transform.forward, dirToTarget);
-        sensor.AddObservation(dirDot);
-        if(dirDot < 0.0f)
+        
+        if(dirDot < 0.1f)
         {
            
-            AddReward(-0.1f);
+            AddReward(-1f);
         }
+
+        sensor.AddObservation(dirDot);
         sensor.AddObservation(dirToTarget);
-       //sensor.AddObservation(carController.speed);
-        //sensor.AddObservation(rb.velocity);
-        //sensor.AddObservation(this.transform.InverseTransformPoint(checkPos));
+        sensor.AddObservation(frontCol);
+        sensor.AddObservation(Mathf.Clamp01(carController.speed/200f));
         sensor.AddObservation(transform.forward);
-      
-       /* Debug.Log("Rigid: " + rb.velocity.normalized);
-        Debug.Log("forward: " + transform.forward);*/
         sensor.AddObservation(leftSteerAngle / 64f); 
         sensor.AddObservation(rightSteerAngle / 64f);
 
-
-        // Add negative reward here for faster driving
-        //AddReward(-0.005f);
-
-        // Reward agent if it is facing in the correct direction
-        /* if(dirDot < 0)
-         {
-             dirDot = 0;
-         }
-
-         AddReward(rewardScalar * dirDot);*/
-        //AddReward(-0.005f);
+       /* if(carController.speed > 15f)
+        {
+            AddReward(Mathf.Clamp01(carController.speed / 175f) * 0.05f);
+        }*/
         cumReward = GetCumulativeReward();
     }
 
@@ -150,8 +140,20 @@ public class AICarAgent : Agent
     {
         //Debug.Log(vectorAction.Length);
         AIThrottle =  vectorAction[0];
+
+        if (AIThrottle < 0.0f)
+        {
+            AIThrottle = 0.0f;
+        }
+
         //AIThrottle = ScaleAction(AIThrottle, 0.0f, 1.0f);
         AIBrake = vectorAction[1];
+
+        if (AIBrake < 0.0f)
+        {
+            AIBrake = 0.0f;
+        }
+
         //AIBrake = ScaleAction(AIBrake, 0.0f, 1.0f);
         AISteer = vectorAction[2];
 
@@ -167,17 +169,29 @@ public class AICarAgent : Agent
              AddReward((-AIThrottle + AIBrake) * BRAKEPEN);
          }*/
 
+        if (frontCol)
+        {
+            //Debug.Log("PEN");
+           
+            AddReward((-AIThrottle + AIBrake) * 0.5f);
+        }
 
-        /*movement = Scale(-0.005f, 0.0025f, 0.0f, 180.0f, carController.speed);   
+
+        /*movement = Scale(-0.005f, 0.0025f, 0.0f, 200.0f, carController.speed);   
         AddReward(Mathf.Clamp(movement, -0.005f, 0.0025f));*/
 
-        //AddReward(-0.001f);
-
-       /* if(first)
+        if (carController.speed > 15f)
         {
-            AIBrake  = 0.0f;
-            AIThrottle = 1.0f;
-        }*/
+            AddReward(Mathf.Clamp01(carController.speed / 200f) * 0.05f);
+        }
+
+        //AddReward(-0.005f);
+
+        /* if(first)
+         {
+             AIBrake  = 0.0f;
+             AIThrottle = 1.0f;
+         }*/
 
 
 
@@ -195,11 +209,11 @@ public class AICarAgent : Agent
     void OnCollisionStay(Collision collision)
     {
         //Debug.Log("Coll stay");
-         if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "AICar" || collision.gameObject.tag == "Player")
+         /*if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "AICar" || collision.gameObject.tag == "Player")
          {
              //Debug.Log("Collision stay penalty");
-             AddReward(-0.1f);
-         }
+             AddReward(-1f);
+         }*/
 
     
        
@@ -223,7 +237,7 @@ public class AICarAgent : Agent
             rb.velocity = Vector3.zero;
             EndEpisode();
             secondsCount = 0;*/
-            AddReward(-0.5f);
+            AddReward(-1f);
             
             
             
@@ -233,7 +247,7 @@ public class AICarAgent : Agent
 
    
 
-   /*  private void OnTriggerEnter(Collider other)
+     private void OnTriggerEnter(Collider other)
      {
          if (other.gameObject.CompareTag("Wall"))
          {
@@ -247,7 +261,7 @@ public class AICarAgent : Agent
          {
              frontCol = false;
          }
-     }*/
+     }
 
     public override void OnEpisodeBegin()
     {

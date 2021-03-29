@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 827570e552023c5459c294174f905afd
+guid: 28932f19858899d46bafd5f9e0f4962b
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - FASTRACE
+  - Paladins Super-Italic
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

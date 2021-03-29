@@ -1367,8 +1367,9 @@ public class RCC_CarControllerV3 : RCC_Core {
 	}
 	
 	void FixedUpdate (){
-       
-        //Debug.Log(speed);
+
+        //Debug.Log(transform.InverseTransformVector(rigid.velocity).z);
+       // Debug.Log(transform.InverseTransformVector(rigid.velocity));
 
         if ((autoGenerateEngineRPMCurve) && oldEngineTorque != maxEngineTorque || oldMaxTorqueAtRPM != maxEngineTorqueAtRPM || minEngineRPM != oldMinEngineRPM || maxEngineRPM != oldMaxEngineRPM)
 			CreateEngineCurve ();
@@ -2238,6 +2239,7 @@ public class RCC_CarControllerV3 : RCC_Core {
 	void OnCollisionEnter (Collision collision){
         //TODO: Take out this return after training!
         //return;
+        //Debug.Log(transform.InverseTransformVector(rigid.velocity));
 
 		CollisionParticles (collision.contacts [0].point);
 		
