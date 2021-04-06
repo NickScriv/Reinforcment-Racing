@@ -467,6 +467,7 @@ public class RCC_CarControllerV3 : RCC_Core {
 
     private void Start()
     {
+        // TODO: Remeber to take Player tag out!
         if (gameObject.CompareTag("AICar"))
         {
             
@@ -1008,6 +1009,9 @@ public class RCC_CarControllerV3 : RCC_Core {
 
 	private void Inputs() {
 
+        if (GameManager.Instance.end)
+            return;
+
 		if (canControl && !AICar) {
 
 			if (!externalController) {
@@ -1101,7 +1105,7 @@ public class RCC_CarControllerV3 : RCC_Core {
 		if (useCounterSteering)
 			steerInput += driftAngle * counterSteeringFactor;
 
-        //Debug.Log("Throttle: " +  throttleInput + " Steer Input: " + steerInput + " Brake Input: " + brakeInput + " Hand Brake Input: " + handbrakeInput);
+      
 		throttleInput = Mathf.Clamp01(throttleInput);
 		brakeInput = Mathf.Clamp01(brakeInput);
      
@@ -2237,8 +2241,7 @@ public class RCC_CarControllerV3 : RCC_Core {
 	/// </summary>
 	/// <param name="collision">Collision.</param>
 	void OnCollisionEnter (Collision collision){
-        //TODO: Take out this return after training!
-        //return;
+      
         //Debug.Log(transform.InverseTransformVector(rigid.velocity));
 
 		CollisionParticles (collision.contacts [0].point);

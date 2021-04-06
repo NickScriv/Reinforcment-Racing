@@ -11,6 +11,8 @@ public class TrackCheckPoints : MonoBehaviour
     {
         public Transform CarTransform;
         public bool last = false;
+        public CheckPoint checkPointObj;
+        public int index;
     }
 
    
@@ -22,11 +24,14 @@ public class TrackCheckPoints : MonoBehaviour
     private void Awake()
     {
         checkPointList = new List<CheckPoint>();
+        int i = 0;
         foreach (Transform checkPointTrans in transform)
         {
             CheckPoint checkPoint = checkPointTrans.GetComponent<CheckPoint>();
             checkPoint.SetTrackCheckPoints(this);
+            checkPoint.index = i;
             checkPointList.Add(checkPoint);
+            i++;
         }
         nextCheckPointIndexList = new List<int>();
 
@@ -47,20 +52,20 @@ public class TrackCheckPoints : MonoBehaviour
         if (checkPointList.IndexOf(checkPoint) == nextCheckPointIndex)
         {
             //Debug.Log(("correct"));
-            bool lastLap = false;
+            bool lastCheck = false;
             if(checkPointList.Count - 1 == nextCheckPointIndex)
             {
-                Debug.Log(("Finished lap"));
-                lastLap = true;
+
+                lastCheck = true;
             }
             nextCheckPointIndexList[AICars.IndexOf(AICarTrans)] = (nextCheckPointIndex + 1) % checkPointList.Count;
-            OnCarCorrectCheckPoint?.Invoke(this, new CheckPointSystemArgs { CarTransform = AICarTrans, last = lastLap });
+            OnCarCorrectCheckPoint?.Invoke(this, new CheckPointSystemArgs { CarTransform = AICarTrans, last = lastCheck, checkPointObj = checkPoint });
  
         }
         else
         {
             //Debug.Log("Wrong");
-            OnCarWrongCheckPoint?.Invoke(this, new CheckPointSystemArgs { CarTransform = AICarTrans});
+            OnCarWrongCheckPoint?.Invoke(this, new CheckPointSystemArgs { CarTransform = AICarTrans, checkPointObj = checkPoint});
         }
     }
 
@@ -72,6 +77,36 @@ public class TrackCheckPoints : MonoBehaviour
         
         return checkPointList[nextCheckpointIndex].transform;
     }
+
+    public CheckPoint getLastCheckPoint()
+    {
+
+        return checkPointList[checkPointList.Count - 1];
+    }
+
+    public Transform getNextCheckpoint(CheckPoint check)
+    {
+
+        int curCheck = checkPointList.IndexOf(check);
+        curCheck = (curCheck + 1) % checkPointList.Count;
+
+        return checkPointList[curCheck].transform;
+    }
+
+    public int getNextCheckpointIndex(Transform AICarTrans)
+    {
+
+        int nextCheckpointIndex = nextCheckPointIndexList[AICars.IndexOf(AICarTrans)];
+
+        return nextCheckpointIndex;
+    }
+
+    public int getCheckpointIndex(CheckPoint check)
+    {
+
+        return checkPointList.IndexOf(check);
+    }
+
 
     public void ResetCheckPoints(Transform AICarTrans)
     {

@@ -160,11 +160,11 @@ public class RCC_WheelCollider : RCC_Core {
    AICarAgent agentScript;
 
 	void Start (){
-
+        
         agentScript = GetComponentInParent<AICarAgent>();
-      
-		// Getting all WheelColliders attached to this vehicle (Except this).
-		allWheelColliders = carController.GetComponentsInChildren<RCC_WheelCollider>().ToList();
+       
+        // Getting all WheelColliders attached to this vehicle (Except this).
+        allWheelColliders = carController.GetComponentsInChildren<RCC_WheelCollider>().ToList();
 
 		GetTerrainData ();		//	Getting terrain datas on scene.
 		CheckBehavior ();		//	Checks selected behavior in RCC Settings.

@@ -9,6 +9,7 @@ TagManager:
   - CheckPoint
   - Player1
   - AI
+  - Wow
   layers:
   - Default
   - TransparentFX
@@ -25,11 +26,11 @@ TagManager:
   - CheckPoint
   - RCCPlayer
   - RCCAI
-  - TempTest
-  - 
-  - 
-  - 
-  - 
+  - TempTest1
+  - TempTest2
+  - TempTest3
+  - TempTest4
+  - TempTest5
   - 
   - 
   - 

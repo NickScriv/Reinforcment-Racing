@@ -215,6 +215,13 @@ public class RCC_Camera : MonoBehaviour{
 	}
 
 	void Update(){
+      
+        if (GameManager.Instance.end || GameManager.Instance.isPaused)
+        {
+           
+            return;
+        }
+            
 
 		// If it's active, enable the camera. If it's not, disable the camera.
 		if (!isRendering) {

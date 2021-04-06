@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour
 {
+    public int index = 0;
     TrackCheckPoints trackCheckPoints;
     private void OnTriggerEnter(Collider other)
     {
@@ -16,7 +17,7 @@ public class CheckPoint : MonoBehaviour
 
     public void SetTrackCheckPoints(TrackCheckPoints trackCheckPoints)
     {
-        //Debug.Log(transform.name);
+   
         this.trackCheckPoints = trackCheckPoints;
     }
 }

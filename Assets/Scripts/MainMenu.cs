@@ -5,14 +5,20 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+
+    private void Awake()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
     public void QuitButton()
     {
         Application.Quit();
-        Debug.Log("Quit");
+        
     }
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("Main 2");
     }
 }

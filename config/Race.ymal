@@ -13,12 +13,11 @@ behaviors:
     reward_signals:
       extrinsic:
         gamma: 0.99
-        strength: 0.8
-      gail: 
-         gamma: 0.99
-         strength: 0.4
-         use_actions: true
-         demo_path: Demos/RaceDemo2.demo
+        strength: 1.0
+      gail:
+        gamma: 0.99
+        strength: 0.0
+        demo_path: Demos/RaceDemo5.demo
     max_steps: 10000000
     time_horizon: 64
     summary_freq: 1000000

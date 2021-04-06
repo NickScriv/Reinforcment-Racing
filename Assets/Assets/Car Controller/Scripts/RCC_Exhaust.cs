@@ -94,8 +94,10 @@ public class RCC_Exhaust : RCC_Core {
 
 	void Update () {
 
-		if(!carController || !particle)
+		if(!carController || !particle || GameManager.Instance.isPaused || GameManager.Instance.end)
 			return;
+
+       
 
 		Smoke ();
 		Flame ();
