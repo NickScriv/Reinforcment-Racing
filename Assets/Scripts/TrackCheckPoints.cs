@@ -84,14 +84,16 @@ public class TrackCheckPoints : MonoBehaviour
         return checkPointList[checkPointList.Count - 1];
     }
 
-    public Transform getNextCheckpoint(CheckPoint check)
+    public CheckPoint getNextCheckpoint(CheckPoint check)
     {
 
         int curCheck = checkPointList.IndexOf(check);
         curCheck = (curCheck + 1) % checkPointList.Count;
 
-        return checkPointList[curCheck].transform;
+        return checkPointList[curCheck];
     }
+
+
 
     public int getNextCheckpointIndex(Transform AICarTrans)
     {
@@ -113,6 +115,15 @@ public class TrackCheckPoints : MonoBehaviour
 
         nextCheckPointIndexList[AICars.IndexOf(AICarTrans)] = 0;
       
+
+    }
+
+    public void SetCheckPoints(Transform AICarTrans, CheckPoint check)
+    {
+        int index = checkPointList.IndexOf(check);
+        index = (index + 1) % checkPointList.Count;
+        nextCheckPointIndexList[AICars.IndexOf(AICarTrans)] = index;
+
 
     }
 }

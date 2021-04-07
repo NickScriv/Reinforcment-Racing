@@ -40,12 +40,12 @@ public class AICarAgent : Agent
     public int laps = 0;
     int collisionCount = 0;
     bool start = true;
-    bool first = true;
+    public bool first = true;
     bool begin = true;
     Transform curReset;
-    CheckPoint lastCheck;
-   
+    public CheckPoint lastCheck;
 
+  
 
 
 
@@ -58,8 +58,6 @@ public class AICarAgent : Agent
         rb = GetComponent<Rigidbody>();
         lastPos = transform.position;
         curReset = resets[Random.Range(0, (resets.Count - 1))];
-       
-
 
     }
 
@@ -127,7 +125,7 @@ public class AICarAgent : Agent
             }
             else
             {
-                check = checkPointScript.getNextCheckpoint(e.checkPointObj);
+                check = checkPointScript.getNextCheckpoint(e.checkPointObj).transform;
                 
 
             }
@@ -146,9 +144,9 @@ public class AICarAgent : Agent
         {
            
             secondsCount = 0;
-            // Debug.Log("Stuck");
+            
             CheckEndEpisode();
-            Respawn();
+            //Respawn();
         }
         speed = carController.speed;
 
@@ -161,7 +159,7 @@ public class AICarAgent : Agent
         }
 
         
-        if(gameObject.layer == LayerMask.NameToLayer("TempTest" + num) && delay < 0.0f)
+        /*if(gameObject.layer == LayerMask.NameToLayer("TempTest" + num) && delay < 0.0f)
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, 4, mask);
 
@@ -170,16 +168,16 @@ public class AICarAgent : Agent
             {
                 SetLayerRecursively(gameObject, "RCC");
             }
-        }
+        }*/
     
 
     }
 
-   private void Update()
+  /* private void Update()
     {
         if(delay >= 0.0f)
             delay -= Time.deltaTime;
-    }
+    }*/
 
     /* private void OnDrawGizmos()
      {
@@ -234,15 +232,11 @@ public class AICarAgent : Agent
 
 
         if (frontCol)
-        {
-         
-           
+        { 
             AddReward((-AIThrottle + AIBrake) * 0.1f);
         }
         else if (rearCol)
         {
-            
-
             AddReward((AIThrottle + -AIBrake) * 0.1f);
         }
 
@@ -275,13 +269,29 @@ public class AICarAgent : Agent
     {
          rb.velocity = Vector3.zero;
          rb.angularVelocity = Vector3.zero;
-         /*curReset = resets[Random.Range(0, (resets.Count - 1))];
-         this.transform.position = curReset.position;
-         Quaternion rot = curReset.rotation;
-         rot *= Quaternion.Euler(0, Random.Range(-180f, 180f), 0);
-         this.transform.rotation = rot;*/
-         checkPointScript.ResetCheckPoints(carCollider);
-         first = true;
+        /*curReset = resets[Random.Range(0, (resets.Count - 1))];
+        this.transform.position = curReset.position;
+        Quaternion rot = curReset.rotation;
+        rot *= Quaternion.Euler(0, Random.Range(-180f, 180f), 0);
+        this.transform.rotation = rot;*/
+        CheckPoint spawn;
+      
+        spawn = lastCheck;
+        
+        this.transform.position = spawn.transform.position + (spawn.transform.up);
+      
+
+        Quaternion rot = spawn.transform.rotation;
+        rot *= Quaternion.Euler(0, Random.Range(-180f, 180f), 0);
+        this.transform.rotation = rot;
+
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+
+        //checkPointScript.ResetCheckPoints(carCollider);
+        checkPointScript.SetCheckPoints(carCollider, spawn);
+        first = true;
          check = checkPointScript.getNextCheckpoint(carCollider).transform;
          secondsCount = 0;
          laps = 0;
@@ -325,7 +335,7 @@ public class AICarAgent : Agent
 
     void CheckEndEpisode()
     {
-       // EndEpisode();
+       EndEpisode();
 
     }
 

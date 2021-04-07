@@ -9,11 +9,7 @@ public class TestSpawn : MonoBehaviour
     public float AIBrake = 0f;
     public float AISteer = 0f;
 
-    private void Start()
-    {
-        script = GetComponent<RCC_CarControllerV3>();
-    }
-    public Transform car;
+
     // Update is called once per frame
     void Update()
     {
