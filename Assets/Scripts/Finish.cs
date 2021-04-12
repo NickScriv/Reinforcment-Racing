@@ -35,7 +35,8 @@ public class Finish : MonoBehaviour
                 GameManager.Instance.end = true;
                 GameManager.Instance.PauseGame();
                 GameManager.Instance.PauseAllAudio();
-
+                GameManager.Instance.StopAllAudio();
+                Invoke("StopAllAudio", 0.5f);
                 EndPanel.SetActive(true);
 
                
@@ -81,5 +82,10 @@ public class Finish : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         go.SetActive(false);
+    }
+
+    void StopAllAudio()
+    {
+        GameManager.Instance.StopAllAudio();
     }
 }

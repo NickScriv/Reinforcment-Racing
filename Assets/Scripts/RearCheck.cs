@@ -19,6 +19,15 @@ public class RearCheck : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Wall"))
+        {
+
+            coll = true;
+        }
+    }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Wall"))

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using Random = UnityEngine.Random;
 
 
 public class TrackCheckPoints : MonoBehaviour
@@ -45,13 +45,13 @@ public class TrackCheckPoints : MonoBehaviour
 
     public void ThroughCheckPoint(CheckPoint checkPoint, Transform AICarTrans)
     {
-        //Debug.Log(AICars.IndexOf(AICarTrans));
+      
         int nextCheckPointIndex = nextCheckPointIndexList[AICars.IndexOf(AICarTrans)];
         
         
         if (checkPointList.IndexOf(checkPoint) == nextCheckPointIndex)
         {
-            //Debug.Log(("correct"));
+           
             bool lastCheck = false;
             if(checkPointList.Count - 1 == nextCheckPointIndex)
             {
@@ -64,7 +64,7 @@ public class TrackCheckPoints : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Wrong");
+          
             OnCarWrongCheckPoint?.Invoke(this, new CheckPointSystemArgs { CarTransform = AICarTrans, checkPointObj = checkPoint});
         }
     }
@@ -125,5 +125,11 @@ public class TrackCheckPoints : MonoBehaviour
         nextCheckPointIndexList[AICars.IndexOf(AICarTrans)] = index;
 
 
+    }
+
+    public CheckPoint GetRandomCheckpoint()
+    {
+        int rand = Random.Range(0, checkPointList.Count);
+        return checkPointList[rand];
     }
 }

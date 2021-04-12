@@ -1071,7 +1071,7 @@ public class RCC_CarControllerV3 : RCC_Core {
             else
             {
                 if (!changingGear && !cutGas)
-                    throttleInput = (direction == 1 ? AIScript.AIThrottle : AIScript.AIBrake);
+                    throttleInput = (direction == 1 ? Mathf.Clamp01(AIScript.AIThrottle) : Mathf.Clamp01(AIScript.AIBrake));
                 else
                     throttleInput = 0f;
             }
@@ -1083,7 +1083,7 @@ public class RCC_CarControllerV3 : RCC_Core {
             else
             {
                 if (!cutGas)
-                    brakeInput = (direction == 1 ? AIScript.AIBrake : AIScript.AIThrottle);
+                    brakeInput = (direction == 1 ? Mathf.Clamp01(AIScript.AIBrake) : Mathf.Clamp01(AIScript.AIThrottle));
                 else
                     brakeInput = 0f;
             }

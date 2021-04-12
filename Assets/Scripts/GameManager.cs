@@ -70,6 +70,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void StopAllAudio()
+    {
+        AudioSource[] allAudioSources = FindObjectsOfType(typeof(AudioSource), true) as AudioSource[];
+        foreach (AudioSource audioS in allAudioSources)
+        {
+
+            audioS.Stop();
+        }
+    }
+
     public void ResumeAllAudio()
     {
         AudioSource[] allAudioSources = FindObjectsOfType(typeof(AudioSource), true) as AudioSource[];

@@ -160,8 +160,10 @@ public class RCC_WheelCollider : RCC_Core {
    AICarAgent agentScript;
 
 	void Start (){
+        Transform par = transform.parent;
+        agentScript = par.GetComponentInParent<AICarAgent>();
+
         
-        agentScript = GetComponentInParent<AICarAgent>();
        
         // Getting all WheelColliders attached to this vehicle (Except this).
         allWheelColliders = carController.GetComponentsInChildren<RCC_WheelCollider>().ToList();
@@ -277,18 +279,20 @@ public class RCC_WheelCollider : RCC_Core {
 	}
 
 	void Update(){
+        
         if (agentScript != null)
         {
-            if (wheelCollider.name == "FLWheel")
+            if (wheelCollider.name == "FLWheel" || wheelCollider.name == "FL_Wheel")
             {
                 agentScript.leftSteerAngle = wheelCollider.steerAngle;
             }
-            else if(wheelCollider.name == "FRWheel")
+            else if(wheelCollider.name == "FRWheel" || wheelCollider.name == "FR_Wheel")
             {
                 agentScript.rightSteerAngle = wheelCollider.steerAngle;
 
             }
         }
+
       
 
 		// Return if RCC is disabled.

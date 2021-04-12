@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class CountDown : MonoBehaviour
 {
     public AICarAgent[] AIAgents;
+    public RCC_CarControllerV3[] AICars;
     public RCC_CarControllerV3 player;
     public Text countdownText;
     float currentTime = 6.0f;
     int lastCurrentTime = 6;
-    float startingTime = 6.0f;
     public AudioClip countSingle;
     public AudioClip countFinal;
     AudioSource countAudio;
@@ -83,6 +83,13 @@ public class CountDown : MonoBehaviour
         countAudio.clip = countFinal;
         countAudio.Play();
         player.enabled = true;
+
+        foreach (RCC_CarControllerV3 car in AICars)
+        {
+
+            car.enabled = true;
+        }
+
         foreach (AICarAgent agent in AIAgents)
         {
 
