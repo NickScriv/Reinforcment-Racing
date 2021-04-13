@@ -13,8 +13,6 @@ public class AICarAgent : Agent
     [SerializeField] private Transform carCollider;
 
     private float secondsCount = 0.0f;
-    private int minuteCount;
-
     public float AIThrottle = 0.0f;
     public float AIBrake = 0.0f;
     public float AISteer = 0.0f;
@@ -37,20 +35,10 @@ public class AICarAgent : Agent
     Rigidbody rb;
     Vector3 lastPos;
     public int laps = 0;
-    int collisionCount = 0;
-    bool start = true;
-    public bool first = true;
-    bool begin = true;
     Transform curReset;
     public CheckPoint lastCheck;
     bool completed = false;
-
-  
-
-
-
-
-    //[SerializeField] private 
+    bool first = true;
 
     private void Awake()
     {
@@ -80,7 +68,7 @@ public class AICarAgent : Agent
 
     }
 
-    // When AI agent goes through correct checkpoint, give a reward
+
     void OnCorrectCheckPoint(object sender, TrackCheckPoints.CheckPointSystemArgs e)
     {
         
@@ -249,15 +237,6 @@ public class AICarAgent : Agent
         }
 
 
-
-        /* if(first)
-         {
-             AIBrake  = 0.0f;
-             AIThrottle = 1.0f;
-         }*/
-
-
-
     }
 
 
@@ -344,13 +323,5 @@ public class AICarAgent : Agent
             return to;
         return (to - from) * ((val - from2) / (to2 - from2)) + from;
     }
-
-  
-
-
-    
-
-
-
 
 }

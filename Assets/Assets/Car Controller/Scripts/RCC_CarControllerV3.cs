@@ -518,6 +518,8 @@ public class RCC_CarControllerV3 : RCC_Core {
     /// </summary>
     private void CreateAudios(){
 
+      
+
         switch (audioType){
 
             case AudioType.OneSource:
@@ -1544,7 +1546,14 @@ public class RCC_CarControllerV3 : RCC_Core {
 	/// </summary>
 	private void EngineSounds(){
 
-		float lowRPM = 0f;
+        if (GameManager.Instance.end)
+        {
+            
+            return;
+        }
+
+
+        float lowRPM = 0f;
 		float medRPM = 0f;
 		float highRPM = 0f;
 
