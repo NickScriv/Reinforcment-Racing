@@ -140,8 +140,6 @@ public class AICarAgent : Agent
 
         rearCol = rear.coll;
         frontCol = front.coll;
-
-
         
         if(gameObject.layer == LayerMask.NameToLayer("TempTest" + num) && delay < 0.0f)
         {
@@ -173,8 +171,8 @@ public class AICarAgent : Agent
     public override void CollectObservations(VectorSensor sensor)
     {
   
-         dirDot = Vector3.Dot(transform.forward, check.forward); 
-         AddReward(dirDot);
+        dirDot = Vector3.Dot(transform.forward, check.forward); 
+        AddReward(dirDot);
 
         movement = Scale(-0.5f, 0.5f, 0.0f, 200.0f, carController.speed);
         AddReward(Mathf.Clamp(movement, -0.5f, 0.5f));
@@ -190,13 +188,8 @@ public class AICarAgent : Agent
 
         sensor.AddObservation(transform.forward);
 
-     
         sensor.AddObservation(leftSteerAngle / 64f); 
         sensor.AddObservation(rightSteerAngle / 64f);
-
-       
-
-
 
         cumReward = GetCumulativeReward();
     }
@@ -210,17 +203,10 @@ public class AICarAgent : Agent
 
         AISteer = vectorAction[2];
 
-
-
-
-
         if (AIThrottle < 0.0f)
         {
             AIThrottle = 0.0f;
         }
-
-
-
 
         if (AIBrake < 0.0f)
         {
@@ -235,7 +221,6 @@ public class AICarAgent : Agent
         {
             AddReward((AIThrottle + -AIBrake) * 0.3f);
         }
-
 
     }
 
